@@ -1,0 +1,14 @@
+     1 00000000 48656C6C6F20776F72-     hello: DB 'Hello world!',10 
+     1 00000009 6C64210A           
+     2                                  helloLen: EQU $-hello
+     3                                  SECTION .text
+     4                                  GLOBAL _start
+     5                                  _start:
+     6 0000000D B804000000              mov eax,4
+     7 00000012 BB01000000              mov ebx,1
+     8 00000017 B9[00000000]            mov ecx,hello
+     9 0000001C BA0D000000              mov edx,helloLen
+    10 00000021 CD80                    int 80h
+    11 00000023 B801000000              mov eax,1
+    12 00000028 BB00000000              mov ebx,0
+    13 0000002D CD80                    int 80h
